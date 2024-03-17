@@ -24,13 +24,15 @@ options:
 1. **天顶位置确定**
 ```
 $ python pap.py zenith -h
-usage: pap.py zenith [-h] img_path
-
-positional arguments:
-  img_path    标注好直线的图片的路径
-
-options:
-  -h, --help  show this help message and exit
+usage: pap.py zenith [-h] [-c COLOUR] image_path
+                                                
+positional arguments:                           
+  image_path            标注好直线的图片的路径  
+                                                
+options:                                        
+  -h, --help            show this help message and exit
+  -c COLOUR, --colour COLOUR
+                        直线颜色，可选red,green,blue，默认为green
 ```
 首先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
 然后执行：
