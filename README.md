@@ -1,42 +1,46 @@
 # 照片测星定位
+
 > 就像每个星星都有自己的位置，每个人也都有自己的轨迹。
 > ——ChatGPT瞎编的
 
 ## 作者
+
 [MC着火的冰块](https://space.bilibili.com/551409211)
 
+## 原理
+
+[从一张星空照片定位出拍摄地是真的还是假的？](https://www.bilibili.com/video/BV1Dx4y117yM)
+
+[照片测星定位法原理简介](https://www.bilibili.com/read/cv28301382)
+
 ## 使用方法
+
 使用`-h`参数获取帮助
-```
-$ python pap.py -h
-usage: pap.py [-h] {zenith} ...
 
-照片测星定位(Photo Astrological Positioning)
+下面以`test/1.jpg`为例进行演示
 
-options:
-  -h, --help  show this help message and exit
+1. **照片上的天体辨识和测量**
 
-子命令:
-  {zenith}
-    zenith    天顶位置确定
-```
+在照片上标记星星的名字和坐标（**以图片正中心为原点**），在星图软件中查找出**拍摄时**它们的时角和赤纬
 
-1. **天顶位置确定**
-```
-$ python pap.py zenith -h
-usage: pap.py zenith [-h] [-c COLOUR] image_path
-                                                
-positional arguments:                           
-  image_path            标注好直线的图片的路径  
-                                                
-options:                                        
-  -h, --help            show this help message and exit
-  -c COLOUR, --colour COLOUR
-                        直线颜色，可选red,green,blue，默认为green
-```
-首先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
-然后执行：
+时间这里是2023-11-02 23:52
+
+| 星星  | x    | y      | 时角           | 赤纬           |
+|-----|------|--------|--------------|--------------|
+| 昴宿六 | -384 | -364.5 | 14h49m44.14s | +24°10'46.5" |
+| 木星  | 44   | -130.5 | 16h04m10.53s | +13°39'15.2" |
+| 天囷一 | -97  | 97.5   | 15h35m06.71s | +4°11'04.5"  |
+| 天囷八 | 13   | 106.5  | 15h54m06.05s | +3°20'16.6"  |
+| 天苑一 | -412 | 580.5  | 14h39m29.71s | -13°26'19.1" |
+记录完后，运行：
 ```commandline
-python pap.py zenith path/to/img -c green
+pap mark -j data.json
 ```
-输出的坐标记录下来，后面要用
+按要求输入数据即可
+
+2. **天顶位置确定**
+先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来，然后执行：
+```commandline
+pap zenith ../test/lines.jpg -c red -j data.json
+```
+程序会很快计算出距离这些直线总距离最近的点

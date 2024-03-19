@@ -3,8 +3,10 @@ import numpy as np
 
 from intersection_of_multi_lines import intersection_of_multi_lines
 
+import json
 
-def main(image_path: str, c: str):
+
+def main(image_path: str, c: str, json_path: str):
     # 转化颜色字符串为色调
     match c:
         case 'red':
@@ -46,6 +48,13 @@ def main(image_path: str, c: str):
     zenith[1] -= image.shape[0] / 2
     print(zenith)
 
+    # 写入json
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    data['zenith'] = (zenith[0][0], zenith[1][0])
+    with open(json_path, 'w') as f:
+        json.dump(data, f)
+
 
 if __name__ == '__main__':
-    main('../test/lines.jpg', 'red')
+    main('../test/lines.jpg', 'red', 'data.json')
