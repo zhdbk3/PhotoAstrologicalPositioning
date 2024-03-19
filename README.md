@@ -32,6 +32,7 @@
 | 天囷一 | -97  | 97.5   | 15h35m06.71s | +4°11'04.5"  |
 | 天囷八 | 13   | 106.5  | 15h54m06.05s | +3°20'16.6"  |
 | 天苑一 | -412 | 580.5  | 14h39m29.71s | -13°26'19.1" |
+
 记录完后，运行：
 ```commandline
 pap mark -j data.json
@@ -39,6 +40,7 @@ pap mark -j data.json
 按要求输入数据即可
 
 2. **天顶位置确定**
+
 先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来，然后执行：
 ```commandline
 pap zenith ../test/lines.jpg -c red -j data.json
