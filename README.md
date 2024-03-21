@@ -94,18 +94,18 @@ pap zenith test/lines.jpg -c red -j data.json
 
 3. **像素焦距**
 
-任选照片上两颗星星，它们的照片上坐标分别为$(x_1, y_1), (x_2, y_2)$，GP分别为$(\phi_1, \lambda_1), (\phi_2, \lambda_2)$，设像素焦距为$z$
+任选照片上两颗星星，它们的照片上坐标分别为 $(x_1, y_1), (x_2, y_2)$，GP分别为 $(\phi_1, \lambda_1), (\phi_2, \lambda_2)$，设像素焦距为 $z$
 
 则理论夹角为：
 
 $$
-\operatorname{acos}{\left(\sin{\left(\phi_{1} \right)} \sin{\left(\phi_{2} \right)} + \cos{\left(\phi_{1} \right)} \cos{\left(\phi_{2} \right)} \cos{\left(\lambda_{1} - \lambda_{2} \right)} \right)}
+\arccos{\left(\sin{\left(\phi_{1} \right)} \sin{\left(\phi_{2} \right)} + \cos{\left(\phi_{1} \right)} \cos{\left(\phi_{2} \right)} \cos{\left(\lambda_{1} - \lambda_{2} \right)} \right)}
 $$
 
 尝试夹角为：
 
 $$
-\operatorname{acos}{\left(\frac{x_{1} x_{2} + y_{1} y_{2} + z^{2}}{\sqrt{x_{1}^{2} + y_{1}^{2} + z^{2}} \sqrt{x_{2}^{2} + y_{2}^{2} + z^{2}}} \right)}
+\arccos{\left(\frac{x_{1} x_{2} + y_{1} y_{2} + z^{2}}{\sqrt{x_{1}^{2} + y_{1}^{2} + z^{2}} \sqrt{x_{2}^{2} + y_{2}^{2} + z^{2}}} \right)}
 $$
 
 令两角相等，解之得：
