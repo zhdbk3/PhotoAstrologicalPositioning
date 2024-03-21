@@ -55,6 +55,8 @@ theta = simplify(vector_angle(vector(x1, y1, z), vector(x2, y2, z)))
 print('尝试夹角', theta)
 print_latex(theta)
 
+sys.stdout.flush()
+
 # 令尝试夹角与理论夹角相等，求出z
 result = solve(Eq(theta, theta0), z)
 print('结果', result)
