@@ -8,6 +8,7 @@ subparsers = parser.add_subparsers(title='子命令', dest='command')
 
 mark_parser = subparsers.add_parser('mark', help='标注照片上的天体并计算GP')
 mark_parser.add_argument('-j', '--json-path', required=True, help='存放路径的json文件路径，若不存在会新建')
+mark_parser.add_argument('-r', '--read', default=None, help='读取已整理好的文件，不再手动输入，格式见README.md')
 
 zenith_parser = subparsers.add_parser('zenith', help='天顶位置确定')
 zenith_parser.add_argument('image_path', help='标注好直线的图片的路径')

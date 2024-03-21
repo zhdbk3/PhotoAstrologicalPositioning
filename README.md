@@ -11,7 +11,7 @@
 
 [从一张星空照片定位出拍摄地是真的还是假的？](https://www.bilibili.com/video/BV1Dx4y117yM)
 
-[照片测星定位法原理简介](https://www.bilibili.com/read/cv28301382)
+[照片测星定位法原理简介及实例示范](https://tieba.baidu.com/p/8724702347)
 
 ## 当前项目进度
 
@@ -59,19 +59,35 @@ pap mark -h
 pap mark -j data.json
 ```
 
-按要求输入数据即可，输入信息计算得到的GP会写入`data.json`中
+按要求输入数据即可，输入信息和计算得到的GP会写入`data.json`中
+
+或者先将其以**以下格式**整理进一个文件：
+
+```text
+| 昴宿六 | -384 | -364.5 | 14h49m44.14s | +24°10'46.5" |
+| 木星  | 44   | -130.5 | 16h04m10.53s | +13°39'15.2" |
+| 天囷一 | -97  | 97.5   | 15h35m06.71s | +4°11'04.5"  |
+| 天囷八 | 13   | 106.5  | 15h54m06.05s | +3°20'16.6"  |
+| 天苑一 | -412 | 580.5  | 14h39m29.71s | -13°26'19.1" |
+```
+
+然后运行：
+
+```commandline
+pap mark -j data.json -r test/stars.txt
+```
 
 2. **天顶位置确定**
 
 先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
 
 ![](test/lines.jpg "标注直线")
-up装不起PS，用这个替代一下（逃
+~~up装不起PS，用这个替代一下（逃~~
 
 然后执行：
 
 ```commandline
-pap zenith ../test/lines.jpg -c red -j data.json
+pap zenith test/lines.jpg -c red -j data.json
 ```
 
 程序会很快计算出距离这些直线总距离最近的点并写入`data.json`
