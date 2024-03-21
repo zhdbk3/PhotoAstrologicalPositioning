@@ -91,3 +91,6 @@ pap zenith test/lines.jpg -c red -j data.json
 ```
 
 程序会很快计算出距离这些直线总距离最近的点并写入`data.json`
+
+3. **像素焦距**
+任选图上两星

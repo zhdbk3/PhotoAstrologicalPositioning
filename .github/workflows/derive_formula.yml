@@ -1,0 +1,34 @@
+name: 推导公式
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: '要运行的文件'
+        required: true
+        default: 'dev/z.py'
+
+jobs:
+  derive:
+    runs-on: windows-latest
+
+    steps:
+      - name: 签出存储库
+        uses: actions/checkout@v3
+
+      - name: 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          cache: 'pip'
+          cache-dependency-path: |
+            **/requirements*.txt
+
+      - name: 安装依赖项
+        run: |
+          pip install -r dev/requirements-dev.txt
+
+      - name: 运行公式推导
+        run: |
+          python ${{ github.event.inputs.file }}
