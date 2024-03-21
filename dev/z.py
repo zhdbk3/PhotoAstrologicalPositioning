@@ -1,5 +1,11 @@
+import io
+import sys
+
 from sympy import Symbol, sin, cos, acos, Eq, simplify, print_latex, solve
 from sympy.vector import CoordSys3D, Vector
+
+# 兼容github输出
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 N = CoordSys3D('N')
 
