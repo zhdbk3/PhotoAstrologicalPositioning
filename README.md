@@ -35,7 +35,7 @@ pap mark -h
 
 ![](test/1.jpg "演示")
 
-1. **照片上的天体辨识和测量**
+### 1. **照片上的天体辨识和测量**
 
 在照片上标记星星的名字和坐标（**以图片正中心为原点**）
 
@@ -77,14 +77,14 @@ pap mark -j data.json
 pap mark -j data.json -r test/stars.txt
 ```
 
-2. **天顶位置确定**
+### 2. **天顶位置确定**
 
 先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
 
 ![](test/lines.jpg "标注直线")
 ~~up装不起PS，用这个替代一下（逃~~
 
-然后执行：
+然后运行：
 
 ```commandline
 pap zenith test/lines.jpg -c red -j data.json
@@ -92,24 +92,14 @@ pap zenith test/lines.jpg -c red -j data.json
 
 程序会很快计算出距离这些直线总距离最近的点并写入`data.json`
 
-3. **像素焦距**
+### 3. **像素焦距**
 
-任选照片上两颗星星，它们的照片上坐标分别为 $(x_1, y_1), (x_2, y_2)$，GP分别为 $(\phi_1, \lambda_1), (\phi_2, \lambda_2)$，设像素焦距为 $z$
+请确保第一步已经完成
 
-则理论夹角为：
+运行：
 
-$$
-\arccos{\left(\sin{\left(\phi_{1} \right)} \sin{\left(\phi_{2} \right)} + \cos{\left(\phi_{1} \right)} \cos{\left(\phi_{2} \right)} \cos{\left(\lambda_{1} - \lambda_{2} \right)} \right)}
-$$
+```commandline
+pap z -j data.json
+```
 
-尝试夹角为：
-
-$$
-\arccos{\left(\frac{x_{1} x_{2} + y_{1} y_{2} + z^{2}}{\sqrt{x_{1}^{2} + y_{1}^{2} + z^{2}} \sqrt{x_{2}^{2} + y_{2}^{2} + z^{2}}} \right)}
-$$
-
-令两角相等，解之得：
-
-$$
-z = （还没算出来）
-$$
+使用二分法进行查找，误差控制在1e-3以内，速度很快，所以不需要C++加速
