@@ -27,7 +27,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     match args.command:
         case 'mark':
-            mark.main(args.json_path)
+            mark.main(args.json_path, args.read)
         case 'zenith':
             get_zenith.main(args.image_path, args.colour, args.json_path)
         case 'z':

@@ -87,8 +87,10 @@ pap mark -j data.json -r test/stars.txt
 然后运行：
 
 ```commandline
-pap zenith test/lines.jpg -c red -j data.json
+pap zenith test/lines.jpg --colour=red -j data.json
 ```
+
+（由于nuitka的bug，`-c`的缩写在可执行文件上无法使用）
 
 程序会很快计算出距离这些直线总距离最近的点并写入`data.json`
 
