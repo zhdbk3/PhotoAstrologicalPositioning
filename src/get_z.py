@@ -57,10 +57,10 @@ def get_z_from_2_stars(star1: dict, star2: dict) -> float:
     acceptable_error = 1e-3  # 可接受的误差范围
     # 确定查找下限，从递减的部分开始
     left = 1
-    step = 100
+    step = 10
     last = 0
-    while try_angle(left) > last:
-        last = left
+    while (tmp := try_angle(left)) > last:
+        last = tmp
         left += step
     # 确定查找上限
     right = left + 1
