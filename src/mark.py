@@ -79,7 +79,7 @@ def calculate_and_write(name: str, coordinate: tuple[float, float], hour_angle: 
     write_star(name, coordinate, GP, json_path)
 
 
-def main(json_path: str, read: None | str = None) -> None:
+def main(json_path: str, read: None | str) -> None:
     """
     标记星星，计算GP
     :param json_path: json路径
