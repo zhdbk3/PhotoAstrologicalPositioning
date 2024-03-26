@@ -108,3 +108,46 @@ pap data.json zenith test/lines.jpg --colour=red
 ### 4. **定位计算**
 
 请确保前3步均已完成
+
+## 详细数学原理
+
+这一部分主要是对[照片测星定位法原理简介](https://www.bilibili.com/read/cv28301382)中没有给出的计算过程进行补充说明
+
+由于作者还是初中生，没有系统地学习过这些内容，所以可能会有错误或不规范的地方，还请大家指正
+
+**基础知识**
+
+[向量是什么](https://baike.baidu.com/item/%E5%90%91%E9%87%8F/1396519)
+其中，长度为1的向量叫做单位向量
+
+这里地球半径不妨以1计算
+
+在[第一步](#1-照片上的天体辨识和测量)中，我们会得到每颗星星的GP，是一个经纬度，如何转化为向量呢？
+
+记纬度为 $\phi$，经度为 $\lambda$，星星的单位方向向量为 $\vec{n}$，则有：
+
+$$
+\vec{n} = \begin{bmatrix}
+\cos\phi \cos\lambda & \cos\phi \sin\lambda & \sin\phi
+\end{bmatrix}
+$$
+
+两个向量的夹角可用以下公式计算：
+
+$$
+\theta = \arccos\left(\frac{\vec{a}\cdot\vec{b}}{\left|\vec{a}\right|\left|\vec{b}\right|}\right)
+$$
+
+**照片成像原理与像素焦距**
+
+当时间确定时，每颗星星的位置都是确定的，因此，它们的向量得夹角就也能确定，即理论夹角
+
+设像素焦距为 $z$，对于一颗在照片上处于 $(x, y)$位置的星星来说，它的尝试向量为：
+
+$$
+\begin{bmatrix}
+x & y & z
+\end{bmatrix}
+$$
+
+任选两颗星星，不断改变z，直到尝试夹角与理论夹角可以看作相等了，我们就试出了 $z$的值，多次计算取平均值
