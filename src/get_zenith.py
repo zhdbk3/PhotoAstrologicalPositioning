@@ -6,7 +6,7 @@ from intersection_of_multi_lines import intersection_of_multi_lines
 import json
 
 
-def main(image_path: str, c: str, json_path: str):
+def main(json_path: str, image_path: str, c: str):
     # 转化颜色字符串为色调
     match c:
         case 'red':
@@ -57,4 +57,4 @@ def main(image_path: str, c: str, json_path: str):
 
 
 if __name__ == '__main__':
-    main('../test/lines.jpg', 'red', 'data.json')
+    main('data.json', '../test/lines.jpg', 'red')

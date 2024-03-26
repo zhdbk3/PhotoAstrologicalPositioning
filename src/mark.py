@@ -35,13 +35,6 @@ def write_star(name: str, coordinate: tuple[float, float], GP: tuple[float, floa
     :param json_path: json路径
     :return: None
     """
-    # 若不存在文件则新建
-    try:
-        with open(json_path):
-            pass
-    except FileNotFoundError:
-        with open(json_path, 'w') as f:
-            json.dump({'stars': []}, f)
     # 读取已有数据
     with open(json_path, 'r') as f:
         data = json.load(f)

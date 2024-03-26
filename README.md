@@ -11,7 +11,7 @@
 
 [从一张星空照片定位出拍摄地是真的还是假的？](https://www.bilibili.com/video/BV1Dx4y117yM)
 
-[照片测星定位法原理简介及实例示范](https://tieba.baidu.com/p/8724702347)
+[照片测星定位法原理简介](https://www.bilibili.com/read/cv28301382)
 
 ## 当前项目进度
 
@@ -26,7 +26,7 @@
 
 ```commandline
 pap -h
-pap mark -h
+pap data.json mark -h
 ...
 ```
 
@@ -55,7 +55,7 @@ pap mark -h
 记录完后，运行：
 
 ```commandline
-pap mark -j data.json
+pap data.json mark
 ```
 
 按要求输入数据即可，输入信息和计算得到的GP会写入`data.json`中
@@ -73,27 +73,10 @@ pap mark -j data.json
 然后运行：
 
 ```commandline
-pap mark -j data.json -r test/stars.txt
+pap data.json mark -r test/stars.txt
 ```
 
-### 2. **天顶位置确定**
-
-先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
-
-![](test/lines.jpg "标注直线")
-~~up装不起PS，用这个替代一下（逃~~
-
-然后运行：
-
-```commandline
-pap zenith test/lines.jpg --colour=red -j data.json
-```
-
-（由于nuitka的bug，`-c`的缩写在可执行文件上无法使用）
-
-程序会很快计算出距离这些直线总距离最近的点并写入`data.json`
-
-### 3. **像素焦距**
+### 2. **像素焦距**
 
 请确保[第一步](#1-照片上的天体辨识和测量)已经完成
 
@@ -104,3 +87,24 @@ pap z -j data.json
 ```
 
 使用二分法进行查找，误差控制在1e-3以内，速度很快，所以不需要C++加速
+
+### 3. **天顶位置确定**
+
+先将照片中指向天顶的直线用红色、绿色或蓝色（推荐绿色）标注出来
+
+![](test/lines.jpg "标注直线")
+~~up装不起PS，用这个替代一下（逃~~
+
+然后运行：
+
+```commandline
+pap data.json zenith test/lines.jpg --colour=red
+```
+
+（由于nuitka的bug，`-c`的缩写在可执行文件上无法使用）
+
+程序会很快计算出距离这些直线总距离最近的点
+
+### 4. **定位计算**
+
+请确保前3步均已完成
