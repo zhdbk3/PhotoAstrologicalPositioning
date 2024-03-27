@@ -1,6 +1,6 @@
 """双星定位法公式推导"""
 
-from sympy import Symbol, Eq, sin, cos, print_latex, solve, latex
+from sympy import Symbol, Eq, sin, cos, print_latex, solve, symbols, latex, sqrt
 from sympy.vector import CoordSys3D, Vector
 from sympy.abc import x, y, z
 
@@ -46,20 +46,30 @@ def get_plane(phi: Symbol, lambda_: Symbol, theta: Symbol) -> Eq:
     return plane
 
 
-# 星星1
-phi1 = Symbol('\\phi_1')
-lambda1 = Symbol('\\lambda_1')
-theta1 = Symbol('\\theta_1')
-plane1 = get_plane(phi1, lambda1, theta1)
-# 星星2
-phi2 = Symbol('\\phi_2')
-lambda2 = Symbol('\\lambda_2')
-theta2 = Symbol('\\theta_2')
-plane2 = get_plane(phi2, lambda2, theta2)
+# 一颗星星
+phi1 = Symbol('\\phi')
+lambda_ = Symbol('\\lambda')
+theta = Symbol('\\theta')
+plane = get_plane(phi1, lambda_, theta)
+print('Plane')
+print_latex(plane)
+
+# 两个平面方程
+A1, B1, C1, D1 = symbols('A1 B1 C1 D1')
+plane1 = Eq(A1 * x + B1 * y + C1 * z, D1)
+A2, B2, C2, D2 = symbols('A2 B2 C2 D2')
+plane2 = Eq(A2 * x + B2 * y + C2 * z, D2)
 # 地球（单位球）方程
 earth = Eq(x ** 2 + y ** 2 + z ** 2, 1)
-
-# 联立求交点坐标
+print('Equations')
 print(fr'\begin{{cases}} {latex(plane1)} \\ {latex(plane2)} \\ {latex(earth)} \end{{cases}}')
-result = solve([plane1, plane2, earth], [x, y, z])
-print_latex(result)
+
+# 联立求解
+solution1, solution2 = solve([plane1, plane2, earth], [x, y, z], dict=True)
+print('Solution')
+print_latex(solution1[x])
+print_latex(solution1[y])
+print_latex(solution1[z])
+print_latex(solution2[x])
+print_latex(solution2[y])
+print_latex(solution2[z])
