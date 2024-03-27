@@ -174,6 +174,8 @@ $$
 
 **定位计算**
 
+知道了天顶位置为像素焦距，就能得到天顶向量，星星向量与天顶向量的夹角就是天顶角，天顶角的余角就是高度角
+
 [法向量_百度百科](https://baike.baidu.com/item/%E6%B3%95%E5%90%91%E9%87%8F)
 
 用方程ax+by+cz=d表示的平面，向量(a,b,c)就是其法线
@@ -186,13 +188,14 @@ x \sin{\left(\phi \right)} \sin{\left(\theta \right)} + y \sin{\left(\theta \rig
 \sin^{2}{\left(\theta \right)}
 $$
 
-将两颗星星的方程与地球（单位球）的方程联立：
+将两颗星星的平面方程与地球（单位球）的方程联立：
 
 $$
-\left\{\begin{matrix} A_{1} x + B_{1} y + C_{1} z = D_{1} \\
+\left\{\begin{cases}
+A_{1} x + B_{1} y + C_{1} z = D_{1} \\
 A_{2} x + B_{2} y + C_{2} z = D_{2} \\
 x^{2} + y^{2} + z^{2} = 1
-\end{matrix}\right.
+\end{cases}\right.
 $$
 
 解得：
