@@ -205,3 +205,12 @@ $$
 或
 
 ![](README_img/solution2.png "解2")
+
+然后将这两个空间直角坐标转换为经纬度：
+
+$$
+\left\{\begin{matrix}
+\phi = \arcsin z \\
+\lambda = \arctan^2\left(y, x\right)
+\end{matrix}\right.
+$$

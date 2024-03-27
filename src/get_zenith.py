@@ -1,9 +1,9 @@
+import json
+
 import cv2
 import numpy as np
 
 from intersection_of_multi_lines import intersection_of_multi_lines
-
-import json
 
 
 def main(json_path: str, image_path: str, c: str):
