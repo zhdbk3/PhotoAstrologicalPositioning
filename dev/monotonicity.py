@@ -37,4 +37,5 @@ plt.plot(x1, y1)
 # 绘制理论夹角水平线
 plt.axhline(theta0, color='r')
 
+plt.savefig('../README_img/monotonicity.jpg')
 plt.show()
