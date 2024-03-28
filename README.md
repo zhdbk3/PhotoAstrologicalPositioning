@@ -191,11 +191,11 @@ $$
 将两颗星星的平面方程与地球（单位球）的方程联立：
 
 $$
-\left\{\begin{cases}
+\begin{cases}
 A_{1} x + B_{1} y + C_{1} z = D_{1} \\
 A_{2} x + B_{2} y + C_{2} z = D_{2} \\
 x^{2} + y^{2} + z^{2} = 1
-\end{cases}\right.
+\end{cases}
 $$
 
 解得：
@@ -209,8 +209,8 @@ $$
 然后将这两个空间直角坐标转换为经纬度：
 
 $$
-\left\{\begin{matrix}
+\begin{cases}
 \phi = \arcsin z \\
 \lambda = \arctan^2\left(y, x\right)
-\end{matrix}\right.
+\end{cases}
 $$

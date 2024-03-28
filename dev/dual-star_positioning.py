@@ -83,3 +83,7 @@ print(solution1[z])
 print(solution2[x])
 print(solution2[y])
 print(solution2[z])
+
+print(solution1[x] == solution2[x])
+print(solution1[y] == solution2[y])
+print(solution1[z] == -solution2[z])
