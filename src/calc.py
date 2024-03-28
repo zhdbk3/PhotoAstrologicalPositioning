@@ -15,9 +15,9 @@ def get_plane(GP: list[float], theta) -> tuple[np.float64, np.float64, np.float6
     """
     phi = np.radians(GP[0])
     lambda_ = np.radians(GP[1])
-    A = np.sin(phi) * np.sin(theta)
-    B = np.sin(theta) * np.cos(lambda_) * np.cos(phi)
-    C = np.sin(lambda_) * np.sin(theta) * np.cos(phi)
+    A = np.sin(theta) * np.cos(lambda_) * np.cos(phi)
+    B = np.sin(lambda_) * np.sin(theta) * np.cos(phi)
+    C = np.sin(phi) * np.sin(theta)
     D = np.sin(theta) ** 2
     return A, B, C, D
 

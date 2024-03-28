@@ -183,8 +183,8 @@ $$
 记星星的高度角为 $\theta$，根据专栏中**双星定位法**中的算法，可以求出一颗星星的平面方程为：
 
 $$
-x \sin{\left(\phi \right)} \sin{\left(\theta \right)} + y \sin{\left(\theta \right)} \cos{\left(\lambda \right)}
-\cos{\left(\phi \right)} + z \sin{\left(\lambda \right)} \sin{\left(\theta \right)} \cos{\left(\phi \right)} =
+x \sin{\left(\theta \right)} \cos{\left(\lambda \right)} \cos{\left(\phi \right)} + y \sin{\left(\lambda \right)}
+\sin{\left(\theta \right)} \cos{\left(\phi \right)} + z \sin{\left(\phi \right)} \sin{\left(\theta \right)} =
 \sin^{2}{\left(\theta \right)}
 $$
 

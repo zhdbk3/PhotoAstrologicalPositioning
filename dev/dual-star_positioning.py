@@ -1,6 +1,6 @@
 """双星定位法公式推导"""
 
-from sympy import Symbol, Eq, sin, cos, print_latex, solve, symbols, latex, sqrt
+from sympy import Symbol, Eq, sin, cos, print_latex, solve, symbols
 from sympy.vector import CoordSys3D, Vector
 from sympy.abc import x, y, z
 
@@ -36,7 +36,8 @@ def get_plane(phi: Symbol, lambda_: Symbol, theta: Symbol) -> Eq:
     n = GP2vector(phi, lambda_)
     # 求出以nsinθ为法向量且经过点nsinθ的平面方程
     normal_vector = n * sin(theta)  # 法向量
-    a, b, c = normal_vector.components.values()  # 点nsinθ的坐标，同时也是平面的a,b,c
+    components = normal_vector.components
+    a, b, c = components[N.i], components[N.j], components[N.k]  # 点nsinθ的坐标，同时也是平面的a,b,c
     d = Symbol('d')
     plane = Eq(a * x + b * y + c * z, d)  # 平面方程
     # 将点代入求解
