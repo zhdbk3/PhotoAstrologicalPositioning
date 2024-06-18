@@ -6,7 +6,7 @@ from math_utils import GP2vector, vector_angle
 from hint import *
 
 
-def get_z_from_2_stars(star1: StarDict, star2: StarDict) -> float:
+def get_z_from_2_stars(star1: StarDict, star2: StarDict) -> FloatType:
     """
     根据两颗星星算出z
     :param star1: 星星1
@@ -59,17 +59,20 @@ def get_z_from_2_stars(star1: StarDict, star2: StarDict) -> float:
 def main() -> None:
     # 读取json数据
     with open('data.json', 'r') as f:
-        data = json.load(f)
+        data: DataDict = json.load(f)
         stars = data['stars']
 
     # 两两枚举计算
     z_list = []
-    for i in range(len(stars)):
-        for j in range(i + 1, len(stars)):
-            star1, star2 = stars[i], stars[j]
-            z_ij = get_z_from_2_stars(star1, star2)
-            z_list.append(z_ij)
-            print(star1['name'], '\t', star2['name'], '\tz =', z_ij)
+    names = list(stars.keys())
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            name1 = names[i]
+            name2 = names[j]
+            z0 = get_z_from_2_stars(stars[name1], stars[name2])
+            print(name1, name2, f'z = {z0}', sep=' \t')
+            z_list.append(z0)
+
     z = np.mean(z_list)
     print('\n平均值', z)
 

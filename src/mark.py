@@ -39,13 +39,13 @@ def write_star(name: str, coordinate: BinaryType, GP: BinaryType) -> None:
     """
     # 读取已有数据
     with open('data.json', 'r') as f:
-        data = json.load(f)
+        data: DataDict = json.load(f)
+
     # 添加这颗星星
-    data['stars'].append({
-        'name': name,
+    data['stars'][name] = {
         'coordinate': coordinate,
         'GP': GP
-    })
+    }
     with open('data.json', 'w') as f:
         json.dump(data, f)
 

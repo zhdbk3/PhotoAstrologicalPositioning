@@ -160,11 +160,14 @@ def main():
 
     # 两两求交点
     pos_list = []
-    for i in range(len(stars)):
-        for j in range(i + 1, len(stars)):
-            pos_ij = dual_star_positioning(stars[i], stars[j], zenith_vector, z)
-            print(stars[i]['name'], stars[j]['name'], *pos_ij, sep='  \t')
-            pos_list.append(pos_ij)
+    names = list(stars.keys())
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            name1 = names[i]
+            name2 = names[j]
+            pos0 = dual_star_positioning(stars[name1], stars[name2], zenith_vector, z)
+            print(name1, name2, *pos0, sep='  \t')
+            pos_list.append(pos0)
 
     # 取平均值
     summary(pos_list)
