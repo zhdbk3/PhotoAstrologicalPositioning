@@ -53,4 +53,4 @@ jobs:
         with:
           name: PhotoAstrologicalPositioning-v${{ github.event.inputs.version }}-${{ runner.os }}
           path: |
-            build/pap.dist/*
+            build/main.dist/*
