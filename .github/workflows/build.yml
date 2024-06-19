@@ -38,7 +38,7 @@ jobs:
           nuitka-version: main
           script-name: src/main.py
           standalone: true
-          output-file: “Photo Astrological Positioning GUI”
+          output-file: Photo Astrological Positioning
           product-name: 照片测星定位
           file-version: ${{ github.event.inputs.version }}
           product-version: ${{ github.event.inputs.version }}
