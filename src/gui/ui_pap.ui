@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowPAP</class>
+ <widget class="QMainWindow" name="MainWindowPAP">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>照片测星定位 Photo Astrological Positioning</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0" rowspan="3">
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton_del_star">
+        <property name="text">
+         <string>删除星星</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="pushButton_import">
+        <property name="text">
+         <string>导入</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>像素焦距</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QTableWidget" name="tableWidget_stars">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <column>
+         <property name="text">
+          <string>名字</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>x</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>y</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>GP</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>照片上的天体辨识和测量</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton_add_star">
+        <property name="text">
+         <string>添加/修改星星</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLabel" name="label_z">
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="pushButton_export">
+        <property name="text">
+         <string>导出</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="5" column="1" rowspan="2" colspan="2">
+       <widget class="QLabel" name="label_zenith">
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QRadioButton" name="radioButton_b">
+        <property name="text">
+         <string>蓝</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="radioButton_r">
+        <property name="text">
+         <string>红</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="3">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QLineEdit" name="lineEdit_lines_path"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="radioButton_g">
+        <property name="text">
+         <string>绿</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" rowspan="2">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>天顶位置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="pushButton_browse">
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="2" colspan="3">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>天顶位置确定</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>标注了指向天顶的直线的图片路径：</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_address">
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>计算结果</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_lat_lon">
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton_calc">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>定位计算</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

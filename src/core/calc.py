@@ -6,7 +6,7 @@ from geopy.distance import great_circle
 from geopy.geocoders import Nominatim
 from geopy.exc import GeopyError
 
-from math_utils import vector_angle
+from .math_utils import vector_angle
 from hint import *
 
 
@@ -107,12 +107,11 @@ def dual_star_positioning(star1: StarDict, star2: StarDict, zenith_vector: np.nd
     return pos1, pos2
 
 
-def summary(pos_list: list[tuple[BinaryType, BinaryType]]) -> None:
-    """结果汇总，直接输出"""
+def summary(pos_list: list[tuple[BinaryType, BinaryType]]) -> tuple[str, str]:
+    """结果汇总"""
     # 特判只有两颗星星的情况
     if len(pos_list) == 1:
-        print('仅两颗星星，请自行判断')
-        return
+        return '\n'.join(('仅两颗星星，请自行判断', *pos_list)), '-'
 
     # 筛选出正确的数据
     def choose(std: BinaryType, options: tuple[BinaryType, BinaryType]) -> BinaryType:
@@ -137,25 +136,22 @@ def summary(pos_list: list[tuple[BinaryType, BinaryType]]) -> None:
 
     # 计算平均值，输出
     result = tuple(np.mean(correct, axis=0).tolist())
-    print('\n平均值', result)
 
     # 根据经纬度获取地名
     try:
         geolocator = Nominatim(user_agent='PhotoAstrologicalPositioning')
         location = geolocator.reverse(result)
-        print(location.address)
+        address = location.address
     except GeopyError as e:
-        print(e)
-        print('地名获取失败')
+        address = str(e)
+
+    return str(result), address
 
 
-def main():
-    # 读取数据
-    with open('data.json', 'r') as f:
-        data = json.load(f)
-    stars = data['stars']
-    x_zenith, y_zenith = data['zenith']
-    z = data['z']
+def calc(data) -> tuple[str, str]:
+    stars = data.stars
+    x_zenith, y_zenith = data.zenith
+    z = data.z
     zenith_vector = np.array([x_zenith, y_zenith, z])
 
     # 两两求交点
@@ -166,12 +162,7 @@ def main():
             name1 = names[i]
             name2 = names[j]
             pos0 = dual_star_positioning(stars[name1], stars[name2], zenith_vector, z)
-            print(name1, name2, *pos0, sep='  \t')
             pos_list.append(pos0)
 
     # 取平均值
-    summary(pos_list)
-
-
-if __name__ == '__main__':
-    main()
+    return summary(pos_list)

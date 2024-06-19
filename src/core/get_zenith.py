@@ -1,12 +1,11 @@
-import json
-
 import cv2
 import numpy as np
 
-from intersection_of_multi_lines import intersection_of_multi_lines
+from .intersection_of_multi_lines import intersection_of_multi_lines
+from hint import *
 
 
-def main(image_path: str, c: str) -> None:
+def get_zenith(image_path: str, c: str) -> BinaryType:
     # 转化颜色字符串为色调
     match c:
         case 'red':
@@ -45,16 +44,5 @@ def main(image_path: str, c: str) -> None:
     # 转化为以图片中心为原点的坐标
     zenith[0] -= image.shape[1] / 2
     zenith[1] -= image.shape[0] / 2
-    print('天顶坐标')
-    print(zenith)
 
-    # 写入json
-    with open('data.json', 'r') as f:
-        data = json.load(f)
-    data['zenith'] = (zenith[0][0], zenith[1][0])
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
-
-
-if __name__ == '__main__':
-    main('../examples/lines.jpg', 'green')
+    return zenith[0][0], zenith[1][0]

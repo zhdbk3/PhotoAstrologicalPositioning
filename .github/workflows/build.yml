@@ -36,15 +36,17 @@ jobs:
         uses: Nuitka/Nuitka-Action@main
         with:
           nuitka-version: main
-          script-name: src/pap.py
+          script-name: src/main.py
           standalone: true
-          output-file: pap
+          output-file: “Photo Astrological Positioning GUI”
           product-name: 照片测星定位
           file-version: ${{ github.event.inputs.version }}
           product-version: ${{ github.event.inputs.version }}
           file-description: 照片测星定位
           copyright: "Copyright MC着火的冰块. All right reserved."
-          no-deployment-flag: self-execution
+          enable-plugins: pyqt5
+          disable-console: true
+          macos-create-app-bundle: true
 
       - name: 上传工件
         uses: actions/upload-artifact@v3
