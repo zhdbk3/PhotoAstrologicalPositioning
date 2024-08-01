@@ -3,6 +3,11 @@
 """
 import numpy as np
 import matplotlib.pyplot as plt
+from pylab import mpl
+
+# 解决中文乱码
+mpl.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
 
 
 def vector_angle(v1: np.ndarray, v2: np.ndarray) -> np.float64:
@@ -33,9 +38,15 @@ theta0 = 0.3906931771730551
 # 绘制函数图像
 x1 = np.linspace(0, 2000, 2000)
 y1 = [try_angle(z) for z in x1]
-plt.plot(x1, y1)
+plt.plot(x1, y1, label='尝试夹角')
 # 绘制理论夹角水平线
-plt.axhline(theta0, color='r')
+plt.axhline(theta0, color='r', label='理论夹角')
+
+# 添加信息
+plt.legend()
+plt.title('天囷一 天苑一 夹角图像')
+plt.xlabel('z/像素')
+plt.ylabel('夹角/rad')
 
 plt.savefig('../assets/monotonicity.jpg')
 plt.show()

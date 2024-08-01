@@ -25,9 +25,9 @@ pap mark -h
 ...
 ```
 
-下面以`examples/1.jpg`为例进行演示（拍摄时间2023-11-02 23:52）。
+下面以`examples/GaoYaDiaoQiu/1.jpg`为例进行演示（拍摄时间2023-11-02 23:52）。
 
-![](examples/1.jpg "演示")
+![](examples/GaoYaDiaoQiu/1.jpg "演示")
 
 ### 0. 初始化
 
@@ -41,9 +41,19 @@ pap init
 
 在照片上标记星星的名字和坐标（以图片**正中心**为原点，向右为x轴正方向，**向下**为y轴正方向）。
 
+一般处理图像时，都是以左上角为原点，但这里要以图片正中心为原点。坐标计算太麻烦？`pap ct`打开坐标变换工具！
+
 ![](assets/marked.jpg "天体辨识与照片坐标的测量")
 
-在星图软件中查找出**0°,0°处，拍摄时**它们的时角和赤纬。
+在星图软件中查找出**0°, 0°处，拍摄时**它们的时角和赤纬。
+
+**0°, 0°处！！！拍摄时！！！虽然一般是默认的，但还是检查下时间是否为UTC+8！！！**
+
+**0°, 0°处！！！拍摄时！！！虽然一般是默认的，但还是检查下时间是否为UTC+8！！！**
+
+**0°, 0°处！！！拍摄时！！！虽然一般是默认的，但还是检查下时间是否为UTC+8！！！**
+
+**重要的事情说三遍！！！**
 
 ![](assets/stellarium.jpeg "在星图软件中读取时角和赤纬")
 
@@ -76,7 +86,7 @@ pap mark
 然后运行：
 
 ```commandline
-pap mark -r examples/stars.txt
+pap mark -r examples/GaoYaDiaoQiu/stars.txt
 ```
 
 ### 2. 像素焦距
@@ -93,12 +103,12 @@ pap z
 
 先将照片中指向天顶的直线用**纯**红色、绿色或蓝色（推荐绿色）标注出来，长度至少50像素。
 
-![](examples/lines.jpg "标注直线")
+![](examples/GaoYaDiaoQiu/lines.jpg "标注直线")
 
 然后运行：
 
 ```commandline
-pap zenith examples/lines.jpg --colour=green
+pap zenith examples/GaoYaDiaoQiu/lines.jpg --colour=green
 ```
 
 程序会很快计算出距离这些直线总距离最近的点。
@@ -166,7 +176,7 @@ $$
 对于在照片上不同象限中的星星，尝试夹角关于 $z$ 单调递减；
 对于同一象限内的星星，增减性大致如下图，其中后一个交点是我们想要的：
 
-![](assets/monotonicity.jpg "天囷一与天苑一的尝试夹角的增减性")
+![](assets/monotonicity.jpg "天囷一 天苑一 夹角图像")
 
 任选两颗星星，不断改变 $z$ ，直到尝试夹角与理论夹角可以看作相等了，我们就试出了 $z$ 的值，多次计算取平均值。
 

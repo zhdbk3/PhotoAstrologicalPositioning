@@ -5,7 +5,7 @@ import mark
 import get_z
 import get_zenith
 import calc
-
+import ct
 
 parser = argparse.ArgumentParser(description='照片测星定位(Photo Astrological Positioning)')
 
@@ -24,6 +24,8 @@ zenith_parser.add_argument('-c', '--colour', default='green', help='直线颜色
 
 calc_parser = subparsers.add_parser('calc', help='定位计算')
 
+ct_parser = subparsers.add_parser('ct', help='坐标变换工具')
+
 args = parser.parse_args()
 
 match args.command:
@@ -37,3 +39,5 @@ match args.command:
         get_zenith.main(args.image_path, args.colour)
     case 'calc':
         calc.main()
+    case 'ct':
+        ct.main()

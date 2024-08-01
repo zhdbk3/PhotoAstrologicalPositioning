@@ -57,4 +57,4 @@ def main(image_path: str, c: str) -> None:
 
 
 if __name__ == '__main__':
-    main('../examples/lines.jpg', 'green')
+    main('../examples/GaoYaDiaoQiu/lines.jpg', 'green')

@@ -83,7 +83,7 @@ def main(read_path: Optional[str]) -> None:
         with open(read_path, 'r', encoding='utf-8') as f:
             text = f.readlines()
             for line in text:
-                name, x, y, hour_angle, declination = line.split(' ')
+                name, x, y, hour_angle, declination = line.split()
                 coordinate = (float(x), float(y))
                 calculate_and_write(name, coordinate, hour_angle, declination)
         return
@@ -101,4 +101,4 @@ def main(read_path: Optional[str]) -> None:
 
 
 if __name__ == '__main__':
-    main('../examples/stars.txt')
+    main('../examples/issue1_1/stars.txt')
