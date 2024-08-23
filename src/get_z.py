@@ -4,6 +4,7 @@ import numpy as np
 
 from math_utils import GP2vector, vector_angle
 from hint import *
+from char import CHINESE_SPACE
 
 
 def get_z_from_2_stars(star1: StarDict, star2: StarDict) -> FloatType:
@@ -70,7 +71,7 @@ def main() -> None:
             name1 = names[i]
             name2 = names[j]
             z0 = get_z_from_2_stars(stars[name1], stars[name2])
-            print(name1, name2, f'z = {z0}', sep=' \t')
+            print(f'{name1:{CHINESE_SPACE}<6} {name2:{CHINESE_SPACE}<6} z = {z0}')
             z_list.append(z0)
 
     z = np.mean(z_list)

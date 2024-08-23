@@ -3,6 +3,7 @@ import json
 from typing import Optional
 
 from hint import *
+from char import CHINESE_SPACE
 
 
 def to_hours(hour_angle: str) -> float:
@@ -66,7 +67,7 @@ def calculate_and_write(name: str, coordinate: BinaryType, hour_angle: str, decl
     latitude = declination
     longitude = 360 - hour_angle * 15
     GP = (latitude, longitude)
-    print(name, 'GP', GP, sep=' \t')
+    print(f'{name:{CHINESE_SPACE}<6} GP {GP}')
 
     # 写入json
     write_star(name, coordinate, GP)

@@ -8,6 +8,7 @@ from geopy.exc import GeopyError
 
 from math_utils import vector_angle
 from hint import *
+from char import CHINESE_SPACE
 
 
 def get_plane(GP: BinaryType, theta: FloatType) -> QuadrupleType:
@@ -166,7 +167,7 @@ def main():
             name1 = names[i]
             name2 = names[j]
             pos0 = dual_star_positioning(stars[name1], stars[name2], zenith_vector, z)
-            print(name1, name2, *pos0, sep='  \t')
+            print(f'{name1:{CHINESE_SPACE}<6} {name2:{CHINESE_SPACE}<6} {str(pos0[0]):<45} {str(pos0[1]):<45}')
             pos_list.append(pos0)
 
     # 取平均值
