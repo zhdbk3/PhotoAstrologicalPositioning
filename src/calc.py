@@ -5,6 +5,7 @@ from numpy import sqrt
 from geopy.distance import great_circle
 from geopy.geocoders import ArcGIS
 from geopy.exc import GeopyError
+from opencc import OpenCC
 
 from math_utils import vector_angle
 from hint import *
@@ -144,10 +145,12 @@ def summary(pos_list: list[tuple[BinaryType, BinaryType]]) -> None:
     try:
         geolocator = ArcGIS(user_agent='PhotoAstrologicalPositioning')
         location = geolocator.reverse(result)
-        print(location)
+        print(OpenCC('t2s').convert(location.address))
     except GeopyError as e:
         print(e)
         print('地名获取失败')
+    print('声明：逆向地理编码服务由 ArcGIS 提供，不代表作者立场')
+    print('台独全给我去死！')
 
 
 def main():

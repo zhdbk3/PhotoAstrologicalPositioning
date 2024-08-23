@@ -15,7 +15,7 @@ for name in geocoders.__all__:
     else:
         print('这个不需要 api_key')
         try:
-            location = geolocator.reverse((41.51471939704508, 124.42692136576152))
+            location = geolocator.reverse((39.906217, 116.3912757))
             print(location)
         except Exception as e:
             print(e)
