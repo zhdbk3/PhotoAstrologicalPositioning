@@ -101,4 +101,4 @@ def main(read_path: Optional[str]) -> None:
 
 
 if __name__ == '__main__':
-    main('../examples/issue1_1/stars.txt')
+    main('../examples/GaoYaDiaoQiu/stars.txt')

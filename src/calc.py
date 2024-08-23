@@ -3,7 +3,7 @@ import json
 import numpy as np
 from numpy import sqrt
 from geopy.distance import great_circle
-from geopy.geocoders import Nominatim
+from geopy.geocoders import ArcGIS
 from geopy.exc import GeopyError
 
 from math_utils import vector_angle
@@ -141,9 +141,9 @@ def summary(pos_list: list[tuple[BinaryType, BinaryType]]) -> None:
 
     # 根据经纬度获取地名
     try:
-        geolocator = Nominatim(user_agent='PhotoAstrologicalPositioning')
+        geolocator = ArcGIS(user_agent='PhotoAstrologicalPositioning')
         location = geolocator.reverse(result)
-        print(location.address)
+        print(location)
     except GeopyError as e:
         print(e)
         print('地名获取失败')
